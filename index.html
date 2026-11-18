@@ -76,6 +76,11 @@
   .btn.primary { background: var(--g, var(--accent)); color: #0e1024; }
   .btn.ghost { border: 1px solid var(--line); color: var(--text); }
   .btn.soon { border: 1px dashed var(--line); color: var(--muted); cursor: default; }
+  .qr { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 10px 14px 10px 10px;
+        background: var(--bg2); border: 1px solid var(--line); border-radius: 14px; width: fit-content; }
+  .qr img { width: 96px; height: 96px; border-radius: 8px; background: #fff; }
+  .qr span { font-size: .85rem; color: var(--muted); max-width: 150px; }
+  .qr b { display: block; color: var(--text); font-family: Outfit, sans-serif; font-size: 1rem; }
   .small { font-size: .85rem; color: var(--muted); margin-top: 14px; }
   .small a { color: var(--muted); }
   .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; align-self: start; }
@@ -98,6 +103,7 @@
   .panel dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
   .panel dt { color: var(--muted); }
   .panel dd { margin: 0; overflow-wrap: anywhere; }
+  .panel .qr { background: var(--card); margin-top: 20px; }
   footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: .9rem; }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
   footer a { color: var(--muted); }
@@ -145,11 +151,13 @@
   <h2 class="section">Our games</h2>
   <p class="lede">All games are made for Android, play offline and need no account.</p>
 
-  <!-- To add a Google Play link: put the store URL in data-play on the .game element. -->
+  <!-- To add a Google Play link: put the store URL in data-play on the .game element,
+       and a QR code image for that URL in data-qr (see README). -->
 
   <!-- ROYAL MINESWEEPER -->
   <article class="game royal" id="royal-minesweeper"
-           data-play="https://play.google.com/store/apps/details?id=com.minesweep.royal">
+           data-play="https://play.google.com/store/apps/details?id=com.minesweep.royal"
+           data-qr="assets/img/qr-royal.svg">
     <img class="banner" src="assets/img/royal-banner.webp" alt="Royal Minesweeper — every board solvable by logic" width="1024" height="500">
     <div class="body">
       <div>
@@ -182,7 +190,8 @@
 
   <!-- NEON MINESWEEPER -->
   <article class="game neon" id="neon-minesweeper"
-           data-play="https://play.google.com/store/apps/details?id=com.minesweep.neon">
+           data-play="https://play.google.com/store/apps/details?id=com.minesweep.neon"
+           data-qr="assets/img/qr-neon.svg">
     <img class="banner" src="assets/img/neon-banner.webp" alt="Neon Minesweeper — race the clock, chain combos" width="1024" height="500">
     <div class="body">
       <div>
@@ -258,6 +267,10 @@
       <dt>Minesweeper games</dt><dd><a href="mailto:app.mine.sweeper@gmail.com">app.mine.sweeper@gmail.com</a></dd>
       <dt>Game Tap</dt><dd><a href="mailto:gametap.app@gmail.com">gametap.app@gmail.com</a></dd>
     </dl>
+    <div class="qr">
+      <img src="assets/img/qr-site.svg" alt="QR code for serenitygamesdev.github.io" width="96" height="96">
+      <span><b>Share this site</b>Scan to open serenitygamesdev.github.io</span>
+    </div>
   </div>
 </section>
 </main>
@@ -265,7 +278,6 @@
 <footer>
   <div class="wrap">
     <span>© <span id="y">2026</span> Serenity Games</span>
-    <span><a href="app-ads.txt">app-ads.txt</a></span>
   </div>
 </footer>
 
@@ -277,6 +289,12 @@
     box.innerHTML = url
       ? '<a class="btn primary" href="' + url + '" target="_blank" rel="noopener">▶ Get it on Google Play</a>'
       : '<span class="btn soon">Coming soon to Google Play</span>';
+    if (url && g.dataset.qr) {
+      var name = g.querySelector('h3').textContent;
+      box.insertAdjacentHTML('afterend',
+        '<div class="qr"><img src="' + g.dataset.qr + '" alt="QR code for ' + name + ' on Google Play" width="96" height="96">' +
+        '<span><b>Scan to install</b>Point your phone camera here to open ' + name + ' on Google Play</span></div>');
+    }
   });
 </script>
 </body>
