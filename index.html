@@ -115,6 +115,10 @@
     .hero { padding: 64px 0 56px; }
     .icons a { width: 68px; height: 68px; border-radius: 18px; }
   }
+  /* On a phone the visitor is already on the device that would scan the code. */
+  @media (max-width: 820px) and (pointer: coarse), (max-width: 600px) {
+    .qr { display: none; }
+  }
   @media (max-width: 480px) {
     .shots { grid-template-columns: repeat(2, 1fr); }
   }
