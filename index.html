@@ -4,19 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Serenity Games</title>
-<meta name="description" content="Serenity Games is an independent studio making calm, fair and fun mobile games: Royal Minesweeper, Neon Minesweeper and Game Tap.">
+<meta name="description" content="Serenity Games — calm games for busy minds. Royal Minesweeper, Neon Minesweeper and Game Tap for Android.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://serenitygamesdev.github.io/">
 <meta property="og:title" content="Serenity Games">
-<meta property="og:description" content="Independent mobile games: Royal Minesweeper, Neon Minesweeper and Game Tap.">
-<meta property="og:image" content="assets/img/royal-banner.webp">
-<meta name="theme-color" content="#0e1024">
-<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:description" content="Calm games for busy minds. Royal Minesweeper, Neon Minesweeper and Game Tap for Android.">
+<meta property="og:image" content="https://serenitygamesdev.github.io/assets/img/og-image.png">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1b1f3b">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0e1024; --bg2: #151937; --card: #1a1f42; --line: #2a3060;
-    --text: #eef0ff; --muted: #a7acd0; --accent: #8fb8ff; --accent2: #c8a6ff;
+    /* brand palette from the Serenity Games logo */
+    --bg: #1b1f3b; --bg2: #20254a; --card: #252a52; --line: #353b6c;
+    --text: #f3efe8; --muted: #aeb2d2; --accent: #f4b88a; --accent2: #7fd1c7; --ink: #1b1f3b;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -31,20 +38,18 @@
                background: color-mix(in srgb, var(--bg) 82%, transparent); border-bottom: 1px solid var(--line); }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none;
-           font: 800 1.15rem Outfit, sans-serif; letter-spacing: .02em; }
-  .brand img { width: 30px; height: 30px; }
+           font: 700 1.15rem Fredoka, sans-serif; letter-spacing: .02em; }
+  .brand img { width: 34px; height: 34px; }
   nav.links { display: flex; gap: 20px; font-size: .95rem; }
   nav.links a { color: var(--muted); text-decoration: none; }
   nav.links a:hover { color: var(--text); }
 
   /* hero */
-  .hero { position: relative; overflow: hidden; padding: 96px 0 80px; text-align: center;
-          background: radial-gradient(1200px 500px at 50% -10%, #2b2f6e 0%, transparent 60%),
-                      radial-gradient(600px 300px at 85% 30%, #3a2463 0%, transparent 70%), var(--bg); }
-  .hero h1 { font: 800 clamp(2.4rem, 7vw, 4.4rem)/1.05 Outfit, sans-serif; margin: 0 0 16px; letter-spacing: -.01em; }
-  .hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent2));
-                  -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .hero p { max-width: 620px; margin: 0 auto 32px; color: var(--muted); font-size: 1.12rem; }
+  .hero { padding: 32px 0 64px; text-align: center; }
+  .hero .banner { width: 100%; border-radius: 28px; box-shadow: 0 20px 60px rgba(0,0,0,.35); margin-bottom: 32px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hero p { max-width: 620px; margin: 0 auto 28px; color: var(--muted); font-size: 1.12rem; }
+  .hero p b { color: var(--accent2); font-weight: 500; }
   .icons { display: flex; justify-content: center; gap: 18px; }
   .icons a { display: block; width: 84px; height: 84px; border-radius: 22px; overflow: hidden;
              box-shadow: 0 10px 30px rgba(0,0,0,.45); transition: transform .2s; }
@@ -52,7 +57,7 @@
 
   /* games */
   section.games { padding: 40px 0 24px; }
-  h2.section { font: 800 2rem Outfit, sans-serif; margin: 0 0 8px; }
+  h2.section { font: 700 2rem Fredoka, sans-serif; margin: 0 0 8px; }
   .lede { color: var(--muted); margin: 0 0 32px; }
   .game { background: var(--card); border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
           margin-bottom: 40px; scroll-margin-top: 80px; }
@@ -61,10 +66,10 @@
   .game .body { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 28px; }
   .game .head { display: flex; gap: 16px; align-items: center; margin-bottom: 12px; }
   .game .head img { width: 64px; height: 64px; border-radius: 16px; }
-  .game h3 { font: 800 1.6rem/1.15 Outfit, sans-serif; margin: 0; }
+  .game h3 { font: 700 1.6rem/1.15 Fredoka, sans-serif; margin: 0; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
   .tag { font-size: .75rem; padding: 2px 10px; border-radius: 99px; border: 1px solid var(--line); color: var(--muted); }
-  .tag.status { border-color: transparent; background: var(--g, var(--accent)); color: #0e1024; font-weight: 600; }
+  .tag.status { border-color: transparent; background: var(--g, var(--accent)); color: var(--ink); font-weight: 600; }
   .game p.pitch { color: var(--text); margin: 8px 0 14px; }
   .game ul { margin: 0 0 20px; padding: 0; list-style: none; }
   .game li { padding-left: 22px; position: relative; color: var(--muted); margin: 6px 0; }
@@ -73,21 +78,21 @@
   .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 12px;
          font-weight: 600; text-decoration: none; font-size: .95rem; }
-  .btn.primary { background: var(--g, var(--accent)); color: #0e1024; }
+  .btn.primary { background: var(--g, var(--accent)); color: var(--ink); }
   .btn.ghost { border: 1px solid var(--line); color: var(--text); }
   .btn.soon { border: 1px dashed var(--line); color: var(--muted); cursor: default; }
   .qr { display: flex; align-items: center; gap: 12px; margin-top: 16px; padding: 10px 14px 10px 10px;
         background: var(--bg2); border: 1px solid var(--line); border-radius: 14px; width: fit-content; }
   .qr img { width: 96px; height: 96px; border-radius: 8px; background: #fff; }
   .qr span { font-size: .85rem; color: var(--muted); max-width: 150px; }
-  .qr b { display: block; color: var(--text); font-family: Outfit, sans-serif; font-size: 1rem; }
+  .qr b { display: block; color: var(--text); font-family: Fredoka, sans-serif; font-size: 1rem; }
   .small { font-size: .85rem; color: var(--muted); margin-top: 14px; }
   .small a { color: var(--muted); }
   .shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; align-self: start; }
   .shots img { border-radius: 12px; border: 1px solid var(--line); aspect-ratio: 9/16; object-fit: cover; width: 100%; height: auto; }
   .modes { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; align-self: start; }
   .mode { background: var(--bg2); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
-  .mode b { display: block; font-family: Outfit, sans-serif; }
+  .mode b { display: block; font-family: Fredoka, sans-serif; }
   .mode span { font-size: .85rem; color: var(--muted); }
   .mode.locked { opacity: .55; }
 
@@ -98,12 +103,16 @@
   /* about / contact */
   section.about { padding: 24px 0 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; }
   .panel { background: var(--bg2); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
-  .panel h2 { font: 800 1.5rem Outfit, sans-serif; margin: 0 0 10px; }
+  .panel h2 { font: 700 1.5rem Fredoka, sans-serif; margin: 0 0 10px; }
   .panel p { color: var(--muted); margin: 0 0 10px; }
   .panel dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; }
   .panel dt { color: var(--muted); }
   .panel dd { margin: 0; overflow-wrap: anywhere; }
   .panel .qr { background: var(--card); margin-top: 20px; }
+  .panel .qr span { max-width: none; overflow-wrap: anywhere; }
+  .about-head { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+  .about-head img { width: 72px; height: 72px; }
+  .about-head h2 { margin: 0; }
   footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: .9rem; }
   footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
   footer a { color: var(--muted); }
@@ -112,7 +121,8 @@
     nav.links { display: none; }
     .game .body { grid-template-columns: 1fr; padding: 20px; gap: 24px; }
     section.about { grid-template-columns: 1fr; }
-    .hero { padding: 64px 0 56px; }
+    .hero { padding: 16px 0 48px; }
+    .hero .banner { border-radius: 18px; margin-bottom: 24px; }
     .icons a { width: 68px; height: 68px; border-radius: 18px; }
   }
   /* On a phone the visitor is already on the device that would scan the code. */
@@ -128,7 +138,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#"><img src="assets/favicon.svg" alt="">Serenity Games</a>
+    <a class="brand" href="#"><img src="assets/img/logo-mark.png" alt="" width="34" height="34">Serenity Games</a>
     <nav class="links">
       <a href="#royal-minesweeper">Royal Minesweeper</a>
       <a href="#neon-minesweeper">Neon Minesweeper</a>
@@ -140,8 +150,9 @@
 
 <section class="hero">
   <div class="wrap">
-    <h1>Small games,<br><span>big calm.</span></h1>
-    <p>Serenity Games is an independent studio making fair, polished mobile games you can pick up for a minute — and keep playing for an hour.</p>
+    <h1 class="sr-only">Serenity Games — calm games for busy minds</h1>
+    <img class="banner" src="assets/img/serenity-banner.webp" alt="Serenity Games — calm games for busy minds" width="1024" height="500">
+    <p>An independent studio making <b>calm, fair and polished</b> mobile games you can pick up for a minute — and keep playing for an hour.</p>
     <div class="icons">
       <a href="#royal-minesweeper" title="Royal Minesweeper"><img src="assets/img/royal-icon.webp" alt="Royal Minesweeper icon" width="84" height="84"></a>
       <a href="#neon-minesweeper" title="Neon Minesweeper"><img src="assets/img/neon-icon.webp" alt="Neon Minesweeper icon" width="84" height="84"></a>
@@ -261,7 +272,7 @@
 
 <section class="about" id="contact">
   <div class="panel">
-    <h2>About the studio</h2>
+    <div class="about-head"><img src="assets/img/logo-mark.png" alt="Serenity Games logo" width="72" height="72"><h2>About the studio</h2></div>
     <p>We build games we want to play ourselves: fair rules, clean design and no tricks. Our puzzles never force you to guess, our ads are optional rewards, and our games work offline.</p>
     <p>New games and updates are on the way — Game Tap is next.</p>
   </div>
