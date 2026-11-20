@@ -1,5 +1,4 @@
 google.com, pub-7898200416165356, DIRECT, f08c47fec0942fa0
-google.com, pub-7898200416165356, DIRECT, f08c47fec0942fa0
 inmobi.com, b6e632a240c94e25988d2617e6cf3e46, DIRECT, 83e75a7ae333ca9d
 unity.com, 11905464, DIRECT, 96cabb5fbdde37a7
 admanmedia.com, 2063, RESELLER
